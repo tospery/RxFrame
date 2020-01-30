@@ -1,0 +1,6 @@
+framework module RxFrame {
+  umbrella header "RxFrame-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,27 @@
+PODS:
+  - QMUIKit/QMUICore (4.0.4):
+    - QMUIKit/QMUILog
+    - QMUIKit/QMUIWeakObjectContainer
+  - QMUIKit/QMUILog (4.0.4)
+  - QMUIKit/QMUIWeakObjectContainer (4.0.4)
+  - RxFrame (1.0.0):
+    - QMUIKit/QMUICore (= 4.0.4)
+
+DEPENDENCIES:
+  - RxFrame (from `../`)
+
+SPEC REPOS:
+  trunk:
+    - QMUIKit
+
+EXTERNAL SOURCES:
+  RxFrame:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  QMUIKit: 73899f707bdd51f44d16e10d11f224fb821fbe74
+  RxFrame: 92963ec63cb3938155512eacec0bfc8bfe5d398d
+
+PODFILE CHECKSUM: 327b7aef5215745f1b5707ef958e930119364d1c
+
+COCOAPODS: 1.8.4

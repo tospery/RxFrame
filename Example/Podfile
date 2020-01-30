@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'RxFrame_Example' do
+  pod 'RxFrame', :path => '../'
+
+  target 'RxFrame_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
