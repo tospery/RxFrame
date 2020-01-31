@@ -28,6 +28,8 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/tospery/RxFrame.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
+  s.requires_arc = true
+  s.swift_version = '5.0'
   s.ios.deployment_target = '9.0'
 
   s.source_files = 'RxFrame/Classes/**/*'
@@ -38,5 +40,17 @@ Pod::Spec.new do |s|
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   s.frameworks = 'Foundation', 'UIKit', 'Accelerate', 'QuartzCore', 'CoreLocation', 'SystemConfiguration', 'AdSupport', 'WebKit', 'CoreGraphics', 'Photos'
+  s.dependency 'RxSwift', '5.0.0'
+  s.dependency 'RxCocoa', '5.0.0'
+  s.dependency 'Moya', '14.0.0-alpha.1'
+  s.dependency 'ObjectMapper', '3.5.1'
+  s.dependency 'URLNavigator', '2.3.0'
   s.dependency 'QMUIKit/QMUICore', '4.0.4'
+  s.dependency 'SwifterSwift', '5.1.0'
+  s.dependency 'SnapKit', '4.2.0'
+  s.dependency 'ReactorKit', '2.0.1'
+  s.dependency 'Toast-Swift', '5.0.0'
+  s.dependency 'HBDNavigationBar', '1.6.6'
+  s.dependency 'BonMot', '5.4.1'
+  s.dependency 'Cache', '5.2.0'
 end
