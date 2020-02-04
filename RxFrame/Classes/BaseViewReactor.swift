@@ -9,18 +9,26 @@ import UIKit
 
 open class BaseViewReactor: ReactorType {
     
-    let params: Dictionary<String, Any>?
-    // let provider: ServiceProviderType
-    weak var viewController : BaseViewController!
+    let parameter: Dictionary<String, Any>?
     
-    required public init(params: Dictionary<String, Any>?) {
-        self.params = params
+    // public let provider = Provider.default
+    public let provider: ProviderType
+    
+    public var title: String?
+    
+    // let provider: ServiceProviderType
+    public weak var viewController : BaseViewController!
+    
+    required public init(_ provider: ProviderType, _ parameter: Dictionary<String, Any>?) {
+        self.provider = provider
+        self.parameter = parameter
 //        self.provider = provider
 //        self.params = params ?? [:]
 //        self.title = stringMember(self.params, Constant.Parameter.title, nil)
 //        self.keyword = stringMember(self.params, Constant.Parameter.keyword, nil)
 //        self.statusBarStyle = intMember(self.params, Constant.Parameter.statusBarStyle, themeService.attrs.statusBarStyle.rawValue) == 0 ? .default: .lightContent
 //        // self.backgroundColor = self.params[Constant.ViewModel.backgroundColor] as? UIColor ?? themeService.attrs.primaryDark
+        self.title = stringMember(parameter, Param.title, nil)
     }
     
 }
