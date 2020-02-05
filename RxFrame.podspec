@@ -41,6 +41,7 @@ Pod::Spec.new do |s|
   # s.public_header_files = 'Pod/Classes/**/*.h'
   s.frameworks = 'Foundation', 'UIKit', 'Accelerate', 'QuartzCore', 'CoreLocation', 'SystemConfiguration', 'AdSupport', 'WebKit', 'CoreGraphics', 'Photos'
   s.dependency 'RxCocoa', '5.0.0'
+  s.dependency 'RxViewController', '1.0.0'
   s.dependency 'Moya-ObjectMapper-Swift5', '2.8-swift5'
   s.dependency 'URLNavigator', '2.3.0'
   s.dependency 'SwifterSwift', '5.1.0'

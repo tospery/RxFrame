@@ -48,6 +48,7 @@ open class BaseViewController: UIViewController {
     public init(_ navigator: NavigatorType, _ reactor: BaseViewReactor) {
         self.navigator = navigator
         super.init(nibName: nil, bundle: nil)
+        self.hidesBottomBarWhenPushed = true
     }
     
     required public init?(coder: NSCoder) {

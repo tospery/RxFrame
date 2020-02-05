@@ -6,12 +6,33 @@
 //
 
 import UIKit
+import URLNavigator
 
 open class ScrollViewController: BaseViewController {
     
     public var scrollView: UIScrollView!
     
     // MARK: - Init
+    public override init(_ navigator: NavigatorType, _ reactor: BaseViewReactor) {
+        super.init(navigator, reactor)
+        if self is TableViewController {
+            self.scrollView = UITableView(frame: .zero)
+        } else if self is CollectionViewController {
+            self.scrollView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+        } else {
+            self.scrollView = UIScrollView(frame: .zero)
+        }
+//        self.scrollView.emptyDataSetSource = self
+//        self.scrollView.emptyDataSetDelegate = self
+        if #available(iOS 11.0, *) {
+            self.scrollView.contentInsetAdjustmentBehavior = .never
+        }
+    }
+    
+    required public init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - View
     open override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,18 +55,29 @@ open class ScrollViewController: BaseViewController {
 //            self.scrollView = scrollView;
 //        }
         
-        if !(self is TableViewController || self is CollectionViewController || self is WebViewController) {
-            let scrollView = UIScrollView(frame: self.contentFrame)
-            scrollView.contentView = UIView()
-            scrollView.contentSize = CGSize(width: scrollView.width, height: scrollView.height + pixelOne)
-            scrollView.delegate = self
-            if #available(iOS 11.0, *) {
-                scrollView.contentInsetAdjustmentBehavior = .never
-            }
-            self.scrollView = scrollView
-            self.view.addSubview(self.scrollView)
-        }
+//        if !(self is TableViewController || self is CollectionViewController || self is WebViewController) {
+//            let scrollView = UIScrollView(frame: self.contentFrame)
+//            scrollView.contentView = UIView()
+//            scrollView.contentSize = CGSize(width: scrollView.width, height: scrollView.height + pixelOne)
+//            scrollView.delegate = self
+//            if #available(iOS 11.0, *) {
+//                scrollView.contentInsetAdjustmentBehavior = .never
+//            }
+//            self.scrollView = scrollView
+//            self.view.addSubview(self.scrollView)
+//        }
         
+        self.view.addSubview(self.scrollView)
+        self.scrollView.frame = self.contentFrame
+        // scrollView.contentSize = CGSize(width: scrollView.width, height: scrollView.height + pixelOne)
+    }
+    
+    public override func bind(reactor: BaseViewReactor) {
+        super.bind(reactor: reactor)
+        // Bind
+        self.scrollView.rx
+            .setDelegate(self)
+            .disposed(by: self.disposeBag)
     }
     
     // MARK: - Property

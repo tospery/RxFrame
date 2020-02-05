@@ -9,4 +9,11 @@ import UIKit
 
 open class BaseCollectionItem: ReactorType {
 
+    let model: ModelType
+    weak var cell : BaseCollectionCell?
+    
+    required public init(_ model: ModelType) {
+        self.model = model
+    }
+    
 }
