@@ -26,10 +26,10 @@ public extension NetworkingType {
     }
     
     static func APIKeysBasedStubBehaviour<T>(_: T) -> Moya.StubBehavior {
-//        if Constant.Network.useStaging {
-//            // return .immediate
-//            return .delayed(seconds: TimeInterval(1))
-//        }
+        if true {
+            // return .immediate
+            return .delayed(seconds: TimeInterval(1))
+        }
         return .never
     }
     

@@ -58,71 +58,15 @@ public func metric(_ value: CGFloat) -> CGFloat {
     return flat(value / 375.f * UIScreen.width)
 }
 
-// pixelOne - 1像素
-public func pixelOne() -> CGFloat {
-    return QMUIHelper.pixelOne()
-}
-
-// pixelOne - 1像素
 public func connectedToInternet() -> Observable<Bool> {
     return ReachabilityManager.shared.reach
 }
 
-//// price
-//func price(value: Int, color: UIColor, yuanFont: UIFont, jiaoFont: UIFont) -> NSAttributedString? {
-//    let number = NSNumber(value: value)
-//    let decimalNumber = NSDecimalNumber(string: "100")
-//    var priceNumber = NSDecimalNumber(decimal: number.decimalValue)
-//    priceNumber = priceNumber.dividing(by: decimalNumber)
-//    
-//    let formatter = NumberFormatter()
-//    formatter.numberStyle = .none
-//    formatter.minimumIntegerDigits = 1
-//    formatter.minimumFractionDigits = 0
-//    formatter.maximumFractionDigits = 2
-//    guard let string = formatter.string(from: priceNumber), !string.isEmpty else { return nil }
-//    
-//    let priceArray = string.components(separatedBy: ".")
-//    var yuanPrice = ""
-//    if priceArray.count >= 1 {
-//        yuanPrice = priceArray[0]
-//    }
-//    if yuanPrice.isEmpty {
-//        return nil
-//    }
-//    var jiaoPrice = ""
-//    if priceArray.count >= 2 {
-//        jiaoPrice = "." + priceArray[1]
-//    }
-//    
-//    let result = NSMutableAttributedString(string: "￥", attributes: [
-//        .foregroundColor: color,
-//        .font: UIFont.normal(12)
-//    ])
-//    result.append(NSAttributedString(string: yuanPrice, attributes: [.foregroundColor: color, .font: yuanFont]))
-//    if !jiaoPrice.isEmpty {
-//        result.append(NSAttributedString(string: jiaoPrice, attributes: [.foregroundColor: color, .font: jiaoFont]))
-//    }
-//    
-//    return result
-//}
-//
-//func rebate(value: String, prefix: String, suffix: String) -> String? {
-//    if value.isEmpty {
-//        return nil
-//    }
-//    
-//    var result = prefix + String(format: "%.2f", (value as NSString).floatValue)
-//    if result.hasSuffix("0") {
-//        result.remove(at: result.lastIndex(of: "0")!)
-//        if result.hasSuffix("0") {
-//            result.remove(at: result.lastIndex(of: "0")!)
-//        }
-//        if result.hasSuffix(".") {
-//            result.remove(at: result.lastIndex(of: ".")!)
-//        }
-//    }
-//    result += suffix
-//    
-//    return result
-//}
+// 区分全面屏（iPhone X 系列）和非全面屏
+public func alternate(notched: CGFloat, other: CGFloat) -> CGFloat {
+    return (isNotchedScreen ? notched : other)
+}
+
+public func alternate(regular: CGFloat, compact: CGFloat) -> CGFloat {
+    return (QMUIHelper.isRegularScreen() ? regular : compact)
+}
