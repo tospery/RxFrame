@@ -18,12 +18,12 @@ open class ScrollViewController: BaseViewController {
         if self is TableViewController {
             self.scrollView = UITableView(frame: .zero)
         } else if self is CollectionViewController {
-            self.scrollView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+            self.scrollView = UICollectionView(frame: .zero, collectionViewLayout: (self as! CollectionViewController).layout)
         } else {
             self.scrollView = UIScrollView(frame: .zero)
         }
-//        self.scrollView.emptyDataSetSource = self
-//        self.scrollView.emptyDataSetDelegate = self
+        //        self.scrollView.emptyDataSetSource = self
+        //        self.scrollView.emptyDataSetDelegate = self
         if #available(iOS 11.0, *) {
             self.scrollView.contentInsetAdjustmentBehavior = .never
         }
@@ -36,6 +36,9 @@ open class ScrollViewController: BaseViewController {
     // MARK: - View
     open override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.addSubview(self.scrollView)
+        self.scrollView.frame = self.contentFrame
         
 //        if (![self isKindOfClass:BZMTableViewController.class] &&
 //            ![self isKindOfClass:BZMCollectionViewController.class] &&
@@ -67,8 +70,6 @@ open class ScrollViewController: BaseViewController {
 //            self.view.addSubview(self.scrollView)
 //        }
         
-        self.view.addSubview(self.scrollView)
-        self.scrollView.frame = self.contentFrame
         // scrollView.contentSize = CGSize(width: scrollView.width, height: scrollView.height + pixelOne)
     }
     

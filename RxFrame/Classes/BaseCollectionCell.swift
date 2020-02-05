@@ -7,6 +7,7 @@
 
 import UIKit
 import RxSwift
+import NSObject_Rx
 
 open class BaseCollectionCell: UICollectionViewCell {
     
@@ -16,6 +17,8 @@ open class BaseCollectionCell: UICollectionViewCell {
     public func bind(item: BaseCollectionItem) {
         // Bind
         item.cell = self
+//        self.setNeedsLayout()
+//        self.layoutIfNeeded()
     }
     
     open class func size(width: CGFloat, item: BaseCollectionItem) -> CGSize {
